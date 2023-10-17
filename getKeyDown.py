@@ -1,21 +1,20 @@
-from pynput import keyboard, mouse
+from pynput import mouse, keyboard
 from threading import Thread
 
 
 def KeyboardEvent():
     with keyboard.Events() as keyboardEvents:
-        for keyboardEvent in keyboardEvents:
-            print(keyboardEvent)
+        for event in keyboardEvents:
+            print(event.key)
 
 
-def MouseEvent():
-    with mouse.Events() as events:
-        for event in events:
-            print(event)
+def on_click(x, y, button, pressed):
+    if pressed:
+        print(button, [x, y])
 
 
-thread1 = Thread(target=KeyboardEvent)
-thread2 = Thread(target=MouseEvent)
-thread1.start()
-thread2.start()
+keyboardThread = Thread(target=KeyboardEvent)
+keyboardThread.start()
 
+with mouse.Listener(on_click=on_click) as mouseListener:
+    mouseListener.join()
