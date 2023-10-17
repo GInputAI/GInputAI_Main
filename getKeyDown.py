@@ -1,37 +1,33 @@
-from multiprocessing import Process
-
+import time
+from multiprocessing import Process, Manager
 import keyboard
-import mouse
 from pynput import mouse
 
-inputFile = open("input.txt", "w")
 
-
-def on_click(x, y, button, pressed):
+def on_click(x, y, button, pressed, reader, time_start):
     if pressed:
-        inputFile.write(str(button))
-        print(button, [x, y])
+        reader.append([x, y, button, time.time() - time_start])
 
 
-def on_key_press(event):
-    inputFile.write(event.name)
-    print(event.name)
-
-
-keyboard.on_press(on_key_press)
-
-
-def start_listener():
-    listener = mouse.Listener(on_click=on_click, keyboard_click=on_key_press)
-    listener.start()
-    listener.join()
+def start_listener(reader, time_start):
+    with mouse.Listener(on_click=lambda x, y, b, p: on_click(x, y, b, p, reader, time_start)) as listener:
+        listener.join()
 
 
 if __name__ == "__main__":
-    p = Process(target=start_listener)
-    p.start()
-    while True:
-        if keyboard.is_pressed('q'):
-            inputFile.close()
-            break
-    p.terminate()
+    with Manager() as manager:
+        reader = manager.list()
+        p = Process(target=start_listener, args=(reader, time.time()))
+        p.start()
+
+        while True:
+            if keyboard.is_pressed('q'):
+                break
+
+        p.terminate()
+        p.join()
+
+        print(reader[:])  # Вывести все элементы списка reader
+        with open("readers\read_script.txt", "w") as file:
+            for item in reader[:]:
+                file.write(str(item) + "\n")
