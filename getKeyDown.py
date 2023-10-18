@@ -3,7 +3,6 @@ from multiprocessing import Process, Manager
 import keyboard
 from pynput import mouse
 from pynput import keyboard as keyboard_event
-from threading import Thread
 
 
 def KeyboardEvent(reader, time_start):
