@@ -4,16 +4,16 @@ import keyboard
 from pynput import mouse
 from pynput import keyboard as keyboard_event
 from copy import deepcopy
+import pickle
 
 def KeyboardEvent(reader, time_start):
     with keyboard_event.Events() as keyboardEvents:
         for event in keyboardEvents:
             reader.append([event.key, time.time() - time_start])
 
-
 def on_click(x, y, button, pressed, reader, time_start):
     if pressed:
-        reader.append([x, y, str(button), time.time() - time_start])
+        reader.append([x, y, button, time.time() - time_start])
 
 
 def start_listener(reader, time_start):
@@ -40,7 +40,15 @@ if __name__ == "__main__":
         reader2 = deepcopy(reader)
         for i in range(1, len(reader)):
             reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
+
+        # """Save to .pickle
+        with open("../readers/read_script.pickle", "wb") as file:
+            pickle.dump(reader, file)
+            file.close()
+        # """
+
+        """Save to .txt
         with open("../readers/read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
-                
+        """
