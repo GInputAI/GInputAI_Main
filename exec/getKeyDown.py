@@ -5,11 +5,11 @@ from pynput import mouse
 from pynput import keyboard as keyboard_event
 from copy import deepcopy
 
+
 def KeyboardEvent(reader, time_start):
     with keyboard_event.Events() as keyboardEvents:
         for event in keyboardEvents:
             reader.append([event.key, time.time() - time_start])
-            time_start = time.time()
 
 
 def on_click(x, y, button, pressed, reader, time_start):
