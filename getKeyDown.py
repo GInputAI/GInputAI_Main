@@ -2,6 +2,14 @@ import time
 from multiprocessing import Process, Manager
 import keyboard
 from pynput import mouse
+from pynput import keyboard as keyboard_event
+from threading import Thread
+
+
+def KeyboardEvent(reader, time_start):
+    with keyboard_event.Events() as keyboardEvents:
+        for event in keyboardEvents:
+            reader.append([event.key, time.time() - time_start])
 
 
 def on_click(x, y, button, pressed, reader, time_start):
@@ -17,18 +25,20 @@ def start_listener(reader, time_start):
 if __name__ == "__main__":
     with Manager() as manager:
         reader = manager.list()
+        p2 = Process(target=KeyboardEvent, args=(reader, time.time()))
         p = Process(target=start_listener, args=(reader, time.time()))
         p.start()
+        p2.start()
 
         while True:
             if keyboard.is_pressed('q'):
                 break
 
         p.terminate()
-        p.join()
+        p2.terminate()
 
         print(reader[:])  # Вывести все элементы списка reader
-        with open("readers\read_script.txt", "w") as file:
+        with open("readers\\read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
                 
