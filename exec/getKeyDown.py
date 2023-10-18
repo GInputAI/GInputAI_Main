@@ -9,12 +9,11 @@ def KeyboardEvent(reader, time_start):
     with keyboard_event.Events() as keyboardEvents:
         for event in keyboardEvents:
             reader.append([event.key, time.time() - time_start])
-            time_start = time.time()
 
 
 def on_click(x, y, button, pressed, reader, time_start):
     if pressed:
-        reader.append([x, y, button, time.time() - time_start])
+        reader.append([x, y, str(button), time.time() - time_start])
 
 
 def start_listener(reader, time_start):
@@ -31,7 +30,7 @@ if __name__ == "__main__":
         p2.start()
 
         while True:
-            if keyboard.is_pressed('q'):
+            if keyboard.is_pressed('Esc'):
                 break
 
         p.terminate()
