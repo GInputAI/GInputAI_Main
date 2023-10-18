@@ -9,6 +9,7 @@ def KeyboardEvent(reader, time_start):
     with keyboard_event.Events() as keyboardEvents:
         for event in keyboardEvents:
             reader.append([event.key, time.time() - time_start])
+            time_start = time.time()
 
 
 def on_click(x, y, button, pressed, reader, time_start):
