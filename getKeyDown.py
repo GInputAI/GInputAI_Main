@@ -31,3 +31,4 @@ if __name__ == "__main__":
         with open("readers\read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
+                
