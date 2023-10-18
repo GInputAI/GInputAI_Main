@@ -3,7 +3,7 @@ from multiprocessing import Process, Manager
 import keyboard
 from pynput import mouse
 from pynput import keyboard as keyboard_event
-
+from copy import deepcopy
 
 def KeyboardEvent(reader, time_start):
     with keyboard_event.Events() as keyboardEvents:
@@ -37,7 +37,11 @@ if __name__ == "__main__":
         p.terminate()
         p2.terminate()
 
-        print(reader[:])  # Вывести все элементы списка reader
+        reader = list(reader[:])
+        reader2 = deepcopy(reader)
+        for i in range(1, len(reader)):
+            reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
+        print(reader[:])
         with open("../readers/read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
