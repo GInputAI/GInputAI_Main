@@ -41,7 +41,6 @@ if __name__ == "__main__":
         reader2 = deepcopy(reader)
         for i in range(1, len(reader)):
             reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
-        print(reader[:])
         with open("../readers/read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
