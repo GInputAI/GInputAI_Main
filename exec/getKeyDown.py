@@ -37,7 +37,7 @@ if __name__ == "__main__":
         p2.terminate()
 
         print(reader[:])  # Вывести все элементы списка reader
-        with open("readers\\read_script.txt", "w") as file:
+        with open("../readers/read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
                 
