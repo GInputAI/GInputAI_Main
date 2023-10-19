@@ -24,7 +24,6 @@ def InputM(x, y, Button, Delay):
 
 def InputK(Button, Delay):
     time.sleep(Delay)
-    #print(Button)
     keyboard.press(Button)
     keyboard.release(Button)
 
@@ -33,16 +32,9 @@ class InputWork():
     inputs = []
 
     def __init__(self, FilePatch):
-        # """Read .pickle
         with open('../readers/read_script.pickle', "rb") as file:
             self.inputs = pickle.load(file)
-        # """
 
-        """Read .txt
-        with open(FilePatch, 'r') as f:
-            for i in f:
-                self.inputs.append(eval(i))
-                """
     def Exec(self):
         for i in self.inputs:
             if len(i) == 4:
@@ -52,4 +44,3 @@ class InputWork():
 
 
 read_script1 = InputWork('../readers/read_script.pickle')
-read_script1.Exec()

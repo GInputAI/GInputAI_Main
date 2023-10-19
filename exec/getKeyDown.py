@@ -23,34 +23,28 @@ def start_listener(reader, time_start):
         listener.join()
 
 
-if __name__ == "__main__":
-    with Manager() as manager:
-        reader = manager.list()
-        p2 = Process(target=KeyboardEvent, args=(reader, time.time()))
-        p = Process(target=start_listener, args=(reader, time.time()))
-        p.start()
-        p2.start()
+def start():
 
-        while True:
-            if keyboard.is_pressed('Esc'):
-                break
+    if __name__ == "getKeyDown":
+        with Manager() as manager:
+            reader = manager.list()
+            p2 = Process(target=KeyboardEvent, args=(reader, time.time()))
+            p = Process(target=start_listener, args=(reader, time.time()))
+            p.start()
+            p2.start()
 
-        p.terminate()
-        p2.terminate()
+            while True:
+                if keyboard.is_pressed('Esc'):
+                    break
 
-        reader = list(reader[:])
-        reader2 = deepcopy(reader)
-        for i in range(1, len(reader)):
-            reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
+            p.terminate()
+            p2.terminate()
 
-        # """Save to .pickle
-        with open("../readers/read_script.pickle", "wb") as file:
-            pickle.dump(reader, file)
-            file.close()
-        # """
+            reader = list(reader[:])
+            reader2 = deepcopy(reader)
+            for i in range(1, len(reader)):
+                reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
 
-        """Save to .txt
-        with open("../readers/read_script.txt", "w") as file:
-            for item in reader[:]:
-                file.write(str(item) + "\n")
-        """
+            with open("../readers/read_script.pickle", "wb") as file:
+                pickle.dump(reader, file)
+                file.close()
