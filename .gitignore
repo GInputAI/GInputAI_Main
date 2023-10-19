@@ -7,9 +7,10 @@ __pycache__/
 *.so
 
 #User_Data
-readers/*.txt
+readers/
 
 # Distribution / packaging
+exec/test.py
 .Python
 build/
 develop-eggs/

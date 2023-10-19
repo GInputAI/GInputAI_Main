@@ -4,6 +4,7 @@ import keyboard
 from pynput import mouse
 from pynput import keyboard as keyboard_event
 from copy import deepcopy
+import pickle
 
 
 def KeyboardEvent(reader, time_start):
@@ -31,7 +32,7 @@ if __name__ == "__main__":
         p2.start()
 
         while True:
-            if keyboard.is_pressed('q'):
+            if keyboard.is_pressed('Esc'):
                 break
 
         p.terminate()
@@ -41,7 +42,15 @@ if __name__ == "__main__":
         reader2 = deepcopy(reader)
         for i in range(1, len(reader)):
             reader[i][-1] = reader[i][-1] - reader2[i - 1][-1]
+
+        # """Save to .pickle
+        with open("../readers/read_script.pickle", "wb") as file:
+            pickle.dump(reader, file)
+            file.close()
+        # """
+
+        """Save to .txt
         with open("../readers/read_script.txt", "w") as file:
             for item in reader[:]:
                 file.write(str(item) + "\n")
-                
+        """
