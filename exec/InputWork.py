@@ -32,8 +32,11 @@ class InputWork():
     inputs = []
 
     def __init__(self, FilePatch):
-        with open('../readers/read_script.pickle', "rb") as file:
-            self.inputs = pickle.load(file)
+        try:
+            with open(FilePatch, "rb") as file:
+                self.inputs = pickle.load(file)
+        except:
+            None
 
     def Exec(self):
         for i in self.inputs:
