@@ -45,38 +45,26 @@ class Reformat():
             self.reader[i] = lambda: self.FuncList[self.reader[i][0]](ButtonM = self.reader[i][-3],
                                                                       Delay = self.reader[i][-1], x = self.reader[i][1], y = self.reader[i][2],
                                                                       ButtonK = self.reader[i][1])
-    def Save_to_file(self):
-        with open("../readers/read_script.pickle", "wb") as file:
-            pickle.dump(reader, file)
-            file.close()
-    def __init__(self, reader, time_start):
-        self.reader = list(reader[:])
-        for i in range(len(self.reader)):
-            self.reader[i][-1] += - time_start
-
-        temp_reader = deepcopy(self.reader)
-        for i in range(1, len(reader)):
-            self.reader[i][-1] = self.reader[i][-1] - temp_reader[i - 1][-1]
-
+    def __init__(self, FilePath):
+        with open(FilePath, "rb") as file:
+            self.reader = pickle.load(file)
         '''
         print(list(filter(lambda x: x[0] == 'on_click',self.reader))[0])
         print(list(filter(lambda x: x[0] == 'on_move', self.reader))[0])
         print(list(filter(lambda x: x[0] == 'on_press', self.reader))[0])
         print(list(filter(lambda x: x[0] == 'on_release', self.reader))[0])
         '''
-
         self.Txt_to_Func()
-        print(self.reader)
-        self.Save_to_file()
 
-
-
+def on_movel(x, y, reader):
+    reader.append(['on_move', x, y, time.perf_counter()])
+    time.sleep(0.06)
 
 def start_listener_click(reader):
     with mouse.Listener(on_click=lambda x, y, b, p: reader.append(['on_click', x, y, b, p, time.perf_counter()])) as click_listener:
         click_listener.join()
 def start_listener_move(reader):
-    with mouse.Listener(on_move=lambda x, y: reader.append(['on_move', x, y, time.perf_counter()])) as mouse_listener:
+    with mouse.Listener(on_move=lambda x, y: on_movel(x, y, reader), move_suppress = 2000) as mouse_listener:
         mouse_listener.join()
 def start_listener_keyboard(reader):
     with keyboard.Listener(on_press=lambda key: reader.append(['on_press', key, time.perf_counter()]),
@@ -88,9 +76,9 @@ if __name__ == "__main__":
     with Manager() as manager:
         reader = manager.list()
 
-        Pclick = Process(target=start_listener_click, args=(reader, ))
+        #Pclick = Process(target=start_listener_click, args=(reader, ))
         Pmove = Process(target=start_listener_move, args=(reader, ))
-        Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
+        #Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
 
         print('Для старта нажми ESC')
         while True:
@@ -100,29 +88,30 @@ if __name__ == "__main__":
         print('Начало записи')
 
         time_start = time.perf_counter()
-        Pclick.start()
+        #Pclick.start()
         Pmove.start()
-        Pkeybroad.start()
+        #Pkeybroad.start()
 
         while True:
             if kb.is_pressed('Esc'):
                 break
 
-        Pclick.terminate()
+        reader = list(reader[:])
+        for i in range(len(reader)):
+            reader[i][-1] += - time_start
+
+        temp_reader = deepcopy(reader)
+        for i in range(1, len(reader)):
+            reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
+
+        print(reader)
+        with open("../readers/read_script.pickle", "wb") as file:
+            pickle.dump(reader, file)
+            file.close()
+
+        #Pclick.terminate()
         Pmove.terminate()
-        Pkeybroad.terminate()
+        #Pkeybroad.terminate()
 
         print('Запись завершена')
 
-        save1 = Reformat(reader, time_start)
-
-        print('Для воспроизведения нажми ESC')
-        while True:
-            if kb.is_pressed('Esc'):
-                break
-
-        with open('../readers/read_script.pickle', "rb") as file:
-            inputs = pickle.load(file)
-
-        for i in inputs:
-            i()
