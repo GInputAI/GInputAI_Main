@@ -60,6 +60,8 @@ def on_movel(x, y, reader):
     reader.append(['on_move', x, y, time.perf_counter()])
     time.sleep(0.06)
 
+#time.slepp в on_movel с ним можно поиграться типо разную задержку попробовать
+
 def start_listener_click(reader):
     with mouse.Listener(on_click=lambda x, y, b, p: reader.append(['on_click', x, y, b, p, time.perf_counter()])) as click_listener:
         click_listener.join()
@@ -76,9 +78,9 @@ if __name__ == "__main__":
     with Manager() as manager:
         reader = manager.list()
 
-        #Pclick = Process(target=start_listener_click, args=(reader, ))
+        Pclick = Process(target=start_listener_click, args=(reader, ))
         Pmove = Process(target=start_listener_move, args=(reader, ))
-        #Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
+        Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
 
         print('Для старта нажми ESC')
         while True:
@@ -88,9 +90,9 @@ if __name__ == "__main__":
         print('Начало записи')
 
         time_start = time.perf_counter()
-        #Pclick.start()
+        Pclick.start()
         Pmove.start()
-        #Pkeybroad.start()
+        Pkeybroad.start()
 
         while True:
             if kb.is_pressed('Esc'):
@@ -104,14 +106,13 @@ if __name__ == "__main__":
         for i in range(1, len(reader)):
             reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
 
-        print(reader)
         with open("../readers/read_script.pickle", "wb") as file:
             pickle.dump(reader, file)
             file.close()
 
-        #Pclick.terminate()
+        Pclick.terminate()
         Pmove.terminate()
-        #Pkeybroad.terminate()
+        Pkeybroad.terminate()
 
         print('Запись завершена')
 
