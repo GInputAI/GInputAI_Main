@@ -41,7 +41,7 @@ def on_release(ButtonK, Delay, **kwargs):
 
 FuncList = {'on_click': re_type_click, 'on_move': on_move, 'on_press': on_press, 'on_release': on_release}
 
-class Reformat():
+class RunScript():
     def Txt_to_Func(self):
         for i in range(len(self.reader)):
             self.reader[i] = FuncList[self.reader[i][0]](ButtonM = self.reader[i][-3],
@@ -57,6 +57,8 @@ class Reformat():
         for i in self.reader:
             i()
 
+#Отработка скрипта
 time.sleep(3)
-TestObj = Reformat('../readers/read_script.pickle')
-TestObj()
+TestObj = RunScript('../readers/read_script.pickle') #Это только __init__, массив значений упрощается до массива функций
+while True:
+    TestObj() #Это уже __call__, зацикленное воспроизведение
