@@ -12,18 +12,23 @@ keyboard_controller = ControllerK()
 def click_press(Button, Delay):
     time.sleep(Delay)
     mouse_controller.press(Button)
+
 def click_release(Button, Delay):
     time.sleep(Delay)
     mouse_controller.release(Button)
+
 def on_move(x, y, Delay):
     time.sleep(Delay)
     mouse_controller.position = (x, y)
+
 def on_press(ButtonK, Delay):
     time.sleep(Delay)
     keyboard_controller.press(ButtonK)
+
 def on_release(ButtonK, Delay):
     time.sleep(Delay)
     keyboard_controller.release(ButtonK)
+
 
 FuncList = {'on_move': lambda x, y, z: on_move(x, y, z),
             'on_press': lambda x, y: on_press(x, y),
@@ -53,7 +58,7 @@ class RunScript():
         self.Txt_to_Func()
 
     def __call__(self):
-        print(len(self.reader))
+        print('Inputs count: ', len(self.reader))
         for i in self.reader:
             i()
         print('Done')
@@ -61,10 +66,12 @@ class RunScript():
 #Отработка скрипта
 go_to_mine = RunScript('go_to_mine')
 go_to_scala = RunScript('read_script')
+grad_calibr = RunScript('grad_calibr')
 
 print('Для старта нажми f7')
 while True:
     if kb.is_pressed('f7'):
         break
 go_to_mine()
-go_to_scala()
+#go_to_scala()
+grad_calibr()
