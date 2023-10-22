@@ -8,9 +8,9 @@ __pycache__/
 
 #User_Data
 readers/
+exec/test/
 
 # Distribution / packaging
-exec/test.py
 .Python
 build/
 develop-eggs/

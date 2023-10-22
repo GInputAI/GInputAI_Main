@@ -11,6 +11,7 @@ import pickle
 mouse_controller = ControllerM()
 keyboard_controller = ControllerK()
 
+
 class Reformat():
     def click_press(self, Button, Delay):
         time.sleep(Delay)
@@ -58,7 +59,7 @@ class Reformat():
 
 def on_movel(x, y, reader):
     reader.append(['on_move', x, y, time.perf_counter()])
-    time.sleep(0.06)
+    time.sleep(0.04)
 
 #time.slepp в on_movel с ним можно поиграться типо разную задержку попробовать
 
@@ -66,53 +67,55 @@ def start_listener_click(reader):
     with mouse.Listener(on_click=lambda x, y, b, p: reader.append(['on_click', x, y, b, p, time.perf_counter()])) as click_listener:
         click_listener.join()
 def start_listener_move(reader):
-    with mouse.Listener(on_move=lambda x, y: on_movel(x, y, reader), move_suppress = 2000) as mouse_listener:
+    with mouse.Listener(on_move=lambda x, y: on_movel(x, y, reader)) as mouse_listener:
         mouse_listener.join()
 def start_listener_keyboard(reader):
     with keyboard.Listener(on_press=lambda key: reader.append(['on_press', key, time.perf_counter()]),
                            on_release = lambda key: reader.append(['on_release', key, time.perf_counter()])) as keyboard_listener:
         keyboard_listener.join()
 
+def record_script(ScriptName):
+    if __name__ == "__main__":
+        with Manager() as manager:
+            reader = manager.list()
 
-if __name__ == "__main__":
-    with Manager() as manager:
-        reader = manager.list()
+            Pclick = Process(target=start_listener_click, args=(reader, ))
+            Pmove = Process(target=start_listener_move, args=(reader, ))
+            Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
 
-        Pclick = Process(target=start_listener_click, args=(reader, ))
-        Pmove = Process(target=start_listener_move, args=(reader, ))
-        Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
+            print('Для старта нажми f7' + '    |   script: ' + ScriptName)
+            while True:
+                if kb.is_pressed('f7'):
+                    break
+            time.sleep(0.1) #Чтобы не было такого что ESC и запустил и закрыл
+            print('Начало записи ' + '    |   script: ' + ScriptName)
 
-        print('Для старта нажми ESC')
-        while True:
-            if kb.is_pressed('Esc'):
-                break
-        time.sleep(0.1) #Чтобы не было такого что ESC и запустил и закрыл
-        print('Начало записи')
+            time_start = time.perf_counter()
+            Pclick.start()
+            Pmove.start()
+            Pkeybroad.start()
 
-        time_start = time.perf_counter()
-        Pclick.start()
-        Pmove.start()
-        Pkeybroad.start()
+            while True:
+                if kb.is_pressed('f7'):
+                    break
 
-        while True:
-            if kb.is_pressed('Esc'):
-                break
+            reader = list(reader[:])
+            for i in range(len(reader)):
+                reader[i][-1] += - time_start
 
-        reader = list(reader[:])
-        for i in range(len(reader)):
-            reader[i][-1] += - time_start
 
-        temp_reader = deepcopy(reader)
-        for i in range(1, len(reader)):
-            reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
+            temp_reader = deepcopy(reader)
+            for i in range(1, len(reader)):
+                reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
 
-        with open("../readers/read_script.pickle", "wb") as file:
-            pickle.dump(reader, file)
-            file.close()
+            with open("../readers/" + ScriptName + '.pickle', "wb") as file:
+                pickle.dump(reader, file)
+                file.close()
 
-        Pclick.terminate()
-        Pmove.terminate()
-        Pkeybroad.terminate()
+            Pclick.terminate()
+            Pmove.terminate()
+            Pkeybroad.terminate()
 
-        print('Запись завершена')
+            print('Файл сохранён' + '    |   script: ' + ScriptName)
 
+record_script('go_to_mine')
