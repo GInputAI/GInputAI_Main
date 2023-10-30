@@ -41,6 +41,7 @@ class RunScript():
         for i in range(len(self.reader)):
             func_name = self.reader[i][0]
             fargs = self.reader[i][1:]
+            #fargs[-1] = fargs[-1] - 0.00001 #Очень имбовая строка надо поиграться с ней, чисто можно убрать все ассемблер инструкции лишние при записи
             if func_name == 'on_click':
                 fargs = self.reader[i][3], self.reader[i][5]
                 if self.reader[i][4]:
@@ -63,7 +64,7 @@ class RunScript():
             i()
         print('Done')
 
-#Отработка скрипта
+'''
 go_to_mine = RunScript('go_to_mine')
 go_to_scala = RunScript('read_script')
 grad_calibr = RunScript('grad_calibr')
@@ -74,4 +75,8 @@ while True:
         break
 go_to_mine()
 #go_to_scala()
-grad_calibr()
+grad_calibr()'''
+
+def work(ScriptName):
+    Script = RunScript(ScriptName)
+    Script()

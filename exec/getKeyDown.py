@@ -38,7 +38,7 @@ def start_listener_keyboard(reader):
 
 
 def record_script(ScriptName):
-    if __name__ == "__main__":
+    if __name__ == "__main__" or __name__ == "getKeyDown":
         with Manager() as manager:
             reader = manager.list()
 
@@ -83,5 +83,3 @@ def record_script(ScriptName):
             Pmove_delay.terminate()
 
             print('Файл сохранён')
-
-record_script('grad_calibr')
