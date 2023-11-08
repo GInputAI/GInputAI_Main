@@ -18,7 +18,7 @@
     <normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="tab_main">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -43,72 +43,11 @@ QTabBar::tab {
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <attribute name="title">
-      <string>Main menu</string>
-     </attribute>
-     <widget class="QTextBrowser" name="textBrowser">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>661</width>
-        <height>371</height>
-       </rect>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:16pt; font-weight:696;&quot;&gt;Про нас короче мы любим члены ну типа того&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tab1">
      <attribute name="title">
       <string>Script Handler</string>
      </attribute>
-     <widget class="QTextEdit" name="textEdit">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>761</width>
-        <height>351</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>370</y>
-        <width>161</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>370</y>
-        <width>321</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Insert Helper</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="sh_start">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -121,8 +60,21 @@ p, li { white-space: pre-wrap; }
        <string>Start</string>
       </property>
      </widget>
+     <widget class="QLabel" name="file_path_label">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>380</y>
+        <width>441</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MIIAAYY</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="tab2">
      <attribute name="title">
       <string>Script Recorder</string>
      </attribute>
@@ -167,17 +119,17 @@ p, li { white-space: pre-wrap; }
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_5">
+    <widget class="QWidget" name="tab4">
      <attribute name="title">
       <string>AI Data/Learn</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_4">
+    <widget class="QWidget" name="tab3">
      <attribute name="title">
       <string>Settings</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_6">
+    <widget class="QWidget" name="tab5">
      <attribute name="title">
       <string>Profile</string>
      </attribute>

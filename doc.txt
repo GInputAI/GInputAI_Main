@@ -1,4 +1,4 @@
 #Конвертировать UI в .py файл
-pyside6-uic _.ui -o _.py
+pyside6-uic mainUI.ui -o exec/GUI/mainUI.py
 #Конвертировать файл ресурсов .qrc в .py файл
 pyside6-rcc resources.qrc -o files_ico_rc.py
