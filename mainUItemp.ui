@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>784</width>
+    <height>467</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GInput AI</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="files_ico.qrc">
+    <normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tab_main">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>470</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabBar::tab {
+    width: 120px; /* Ширина вкладки */
+    height: 30px; /* Высота вкладки */
+    padding: 5px; /* Отступы внутри вкладки */
+    margin-right: 0px; /* Отступ справа между вкладками */
+}
+QTabBar::tab {
+    flex: 1;
+    align-self: center;
+}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab1">
+     <attribute name="title">
+      <string>Script Handler</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>781</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    font-size: 21px;
+    font-weight: bold;
+    font-family: &quot;Noto Sans&quot;;
+	qproperty-alignment: 'Qt::AlignBottom | Qt::AlignHCenter';
+}</string>
+         </property>
+         <property name="text">
+          <string>Executor</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="20,13">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout" stretch="20,0">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>1</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>23</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="maximumSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="files_ico.qrc">
+                 <normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>8</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Start (f6)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Stop (f6)</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>85</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Script Editor</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>130</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: &quot;Noto Sans&quot;;
+	qproperty-alignment: 'Qt::AlignBottom | Qt::AlignHCenter';
+}</string>
+      </property>
+      <property name="text">
+       <string>Recorder</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>130</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: &quot;Noto Sans&quot;;
+	qproperty-alignment: 'Qt::AlignBottom | Qt::AlignHCenter';
+}</string>
+      </property>
+      <property name="text">
+       <string>Script Editor</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>258</width>
+        <height>126</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0,0,0">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    font-size: 15px;
+    font-family: &quot;Noto Sans&quot;;
+	margin-left: 4px;
+}</string>
+             </property>
+             <property name="text">
+              <string>Record on</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_5">
+             <property name="text">
+              <string>Mouse (Click)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_6">
+             <property name="text">
+              <string>Mouse (Move)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_8">
+             <property name="text">
+              <string>Mouse (Scroll)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_7">
+             <property name="text">
+              <string>Keybroad</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="bottomMargin">
+            <number>20</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    font-size: 15px;
+    font-family: &quot;Noto Sans&quot;;
+	margin-left: 4px;
+}</string>
+             </property>
+             <property name="text">
+              <string>Time mode</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>time.time()</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_3">
+             <property name="text">
+              <string>perf_counter()</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="text">
+              <string>process_time()</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>170</y>
+        <width>381</width>
+        <height>123</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_13">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="checkBox_9">
+           <property name="styleSheet">
+            <string notr="true">QCheckBox {
+    margin-left: 0px;
+	margin-top: 15px;
+}</string>
+           </property>
+           <property name="text">
+            <string>Delay Recalc</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="100,20">
+           <property name="leftMargin">
+            <number>20</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>50</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    qproperty-alignment: 'AlignLeft|AlignVCenter';
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Multiplayer (*1.00)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_2"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="100,20">
+           <property name="leftMargin">
+            <number>20</number>
+           </property>
+           <property name="rightMargin">
+            <number>50</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    qproperty-alignment: 'AlignLeft|AlignVCenter';
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Decrease (+/- ns)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_3"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_4">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_5">
+             <property name="maximumSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="files_ico.qrc">
+               <normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    font-size: 15px;
+    font-family: &quot;Noto Sans&quot;;
+	qproperty-alignment: 'Qt::AlignBottom';
+}</string>
+             </property>
+             <property name="text">
+              <string>Recalc on</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_10">
+             <property name="text">
+              <string>Mouse (Click)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_11">
+             <property name="text">
+              <string>Mouse (Move)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_12">
+             <property name="text">
+              <string>Mouse (Scroll)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_13">
+             <property name="text">
+              <string>Keybroad</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>310</y>
+        <width>241</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="text">
+          <string>Start (f7)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>Stop (f6)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab4">
+     <attribute name="title">
+      <string>AI Data/Learn</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab3">
+     <attribute name="title">
+      <string>Settings</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab5">
+     <attribute name="title">
+      <string>Profile</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="files_ico.qrc"/>
+ </resources>
+ <connections/>
+</ui>
