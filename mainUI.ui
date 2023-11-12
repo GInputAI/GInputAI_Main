@@ -2,11 +2,17 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>807</width>
+    <width>805</width>
     <height>515</height>
    </rect>
   </property>
@@ -19,6 +25,12 @@
   </property>
   <property name="styleSheet">
    <string notr="true"/>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tab_main">
@@ -50,7 +62,7 @@ QTabBar::tab {
      <attribute name="title">
       <string>Script Handler</string>
      </attribute>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QFrame" name="sh_ex">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -58,6 +70,12 @@ QTabBar::tab {
         <width>801</width>
         <height>131</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#sh_ex {
+   background-color: rgb(186, 184, 177);
+   border: 1px solid rgba(0, 0, 0, 0.8); border-radius: 10px;
+}</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -189,6 +207,12 @@ QTabBar::tab {
              <height>85</height>
             </size>
            </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>Script Editor</string>
            </property>
@@ -198,7 +222,7 @@ QTabBar::tab {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget_5">
+     <widget class="QFrame" name="sh_rec">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -206,6 +230,12 @@ QTabBar::tab {
         <width>801</width>
         <height>121</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#sh_rec {
+   background-color: rgb(186, 184, 177);
+   border: 1px solid rgba(0, 0, 0, 0.8); border-radius: 10px;
+}</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="spacing">
@@ -242,7 +272,7 @@ QTabBar::tab {
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,10,8">
+        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="700,1000,800">
          <property name="spacing">
           <number>12</number>
          </property>
@@ -253,94 +283,125 @@ QTabBar::tab {
           <number>0</number>
          </property>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_13">
-           <property name="spacing">
-            <number>0</number>
+          <widget class="QFrame" name="frame_recon">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <item>
-            <widget class="QLabel" name="label_8">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>20</height>
-              </size>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QFrame#frame_recon {
+   background-color: rgb(186, 184, 177);
+   border: 1px solid rgba(0, 0, 0, 0.8); border-radius: 10px;
+}</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <widget class="QWidget" name="layoutWidget_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>212</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_14">
+             <property name="spacing">
+              <number>0</number>
              </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
     font-size: 15px;
     font-family: &quot;Noto Sans&quot;;
 	qproperty-alignment: 'Qt::AlignVCenter | Qt::AlignHCenter';
 }</string>
-             </property>
-             <property name="text">
-              <string>Record on</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="0">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <layout class="QFormLayout" name="formLayout">
-               <property name="horizontalSpacing">
-                <number>3</number>
                </property>
-               <property name="verticalSpacing">
-                <number>6</number>
+               <property name="text">
+                <string>Record on</string>
                </property>
-               <property name="leftMargin">
-                <number>5</number>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
-               <property name="topMargin">
-                <number>10</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="sh_rec_onmouseclick">
-                 <property name="text">
-                  <string>Mouse (Click)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="sh_rec_onmousemove">
-                 <property name="text">
-                  <string>Mouse (Move)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="sh_rec_onmousescroll">
-                 <property name="text">
-                  <string>Mouse (Scroll)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="sh_rec_onkeyboard">
-                 <property name="text">
-                  <string>Keyboard</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              </widget>
              </item>
             </layout>
-           </item>
-          </layout>
+           </widget>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>20</y>
+              <width>211</width>
+              <height>61</height>
+             </rect>
+            </property>
+            <layout class="QFormLayout" name="formLayout_2">
+             <property name="horizontalSpacing">
+              <number>3</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>6</number>
+             </property>
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="sh_rec_onmouseclick_2">
+               <property name="text">
+                <string>Mouse (Click)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="sh_rec_onmousemove_2">
+               <property name="text">
+                <string>Mouse (Move)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="sh_rec_onmousescroll_2">
+               <property name="text">
+                <string>Mouse (Scroll)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="sh_rec_onkeyboard_2">
+               <property name="text">
+                <string>Keyboard</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_17">

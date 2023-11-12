@@ -5,15 +5,23 @@ from mainUI import Ui_MainWindow
 
 class MainWindow(QMainWindow):
     def __init__(self):
+        #super init
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.setFixedSize(self.width(), self.height())
+
         self.ui.sh_ex_filepath.clicked.connect(lambda: self.open_file_dialog(self.ui.sh_ex_line_filepath))
+        self.ui.sh_rec_onmouseclick.setChecked(True)
+        self.ui.sh_rec_onmousemove.setChecked(True)
+        self.ui.sh_rec_onkeyboard.setChecked(True)
+        self.ui.sh_rec_onperfcounter.setChecked(True)
+
 
     def open_file_dialog(self, label_upd):
         # Открываем диалог выбора файла
         dialog = QFileDialog(self)
-        dialog.setDirectory("C:/Users/XUI/PycharmProjects/GInputAI_Main/exec")
+        #dialog.setDirectory("C:/Users/XUI/PycharmProjects/GInputAI_Main/exec")
         dialog.setAcceptMode(QFileDialog.AcceptOpen)  # Режим выбора одного файла
         dialog.fileSelected.connect(label_upd.setText)  # Подключаем слот для обновления QLabel
         dialog.exec()
