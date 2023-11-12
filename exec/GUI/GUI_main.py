@@ -8,14 +8,14 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.sh_start.clicked.connect(self.open_file_dialog)
+        self.ui.sh_ex_filepath.clicked.connect(lambda: self.open_file_dialog(self.ui.sh_ex_line_filepath))
 
-    def open_file_dialog(self):
+    def open_file_dialog(self, label_upd):
         # Открываем диалог выбора файла
         dialog = QFileDialog(self)
         dialog.setDirectory("C:/Users/XUI/PycharmProjects/GInputAI_Main/exec")
         dialog.setAcceptMode(QFileDialog.AcceptOpen)  # Режим выбора одного файла
-        dialog.fileSelected.connect(self.ui.file_path_label.setText)  # Подключаем слот для обновления QLabel
+        dialog.fileSelected.connect(label_upd.setText)  # Подключаем слот для обновления QLabel
         dialog.exec()
 
 
