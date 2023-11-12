@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(805, 515)
+        MainWindow.resize(824, 515)
         icon = QIcon()
         icon.addFile(u":/ico/ico/mouse_icon-icons.com_60636.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -48,16 +48,15 @@ class Ui_MainWindow(object):
 "QTabBar::tab {\n"
 "    flex: 1;\n"
 "    align-self: center;\n"
-"}\n"
-"")
+"}")
         self.tab1 = QWidget()
         self.tab1.setObjectName(u"tab1")
         self.sh_ex = QFrame(self.tab1)
         self.sh_ex.setObjectName(u"sh_ex")
-        self.sh_ex.setGeometry(QRect(0, 40, 801, 131))
+        self.sh_ex.setGeometry(QRect(10, 30, 801, 131))
         self.sh_ex.setStyleSheet(u"QFrame#sh_ex {\n"
-"   background-color: rgb(186, 184, 177);\n"
-"   border: 1px solid rgba(0, 0, 0, 0.8); border-radius: 10px;\n"
+"   background-color: rgba(0, 0, 0, 0.03);\n"
+"   border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 10px;\n"
 "}")
         self.verticalLayout_3 = QVBoxLayout(self.sh_ex)
         self.verticalLayout_3.setSpacing(0)
@@ -83,18 +82,43 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setSpacing(2)
+        self.horizontalLayout.setSpacing(3)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(1, -1, -1, -1)
         self.sh_ex_line_filepath = QLineEdit(self.sh_ex)
         self.sh_ex_line_filepath.setObjectName(u"sh_ex_line_filepath")
         self.sh_ex_line_filepath.setMaximumSize(QSize(16777215, 23))
+        self.sh_ex_line_filepath.setStyleSheet(u"QLineEdit {\n"
+"	border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 3px;\n"
+"	padding-left: 5px;\n"
+"    color: rgb(110, 110, 110);\n"
+"}\n"
+"")
 
         self.horizontalLayout.addWidget(self.sh_ex_line_filepath)
 
         self.sh_ex_filepath = QPushButton(self.sh_ex)
         self.sh_ex_filepath.setObjectName(u"sh_ex_filepath")
-        self.sh_ex_filepath.setMaximumSize(QSize(35, 35))
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sh_ex_filepath.sizePolicy().hasHeightForWidth())
+        self.sh_ex_filepath.setSizePolicy(sizePolicy)
+        self.sh_ex_filepath.setMinimumSize(QSize(32, 32))
+        self.sh_ex_filepath.setMaximumSize(QSize(32, 32))
+        self.sh_ex_filepath.setStyleSheet(u"QPushButton {\n"
+"   background-color: rgba(0, 0, 0, 0.2);\n"
+"   border: 1px solid rgba(0, 0, 0, 0.5); border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(210,210,210);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgb(235,235,235);\n"
+"}")
         icon1 = QIcon()
         icon1.addFile(u":/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.sh_ex_filepath.setIcon(icon1)
@@ -111,12 +135,40 @@ class Ui_MainWindow(object):
         self.sh_ex_start = QPushButton(self.sh_ex)
         self.sh_ex_start.setObjectName(u"sh_ex_start")
         self.sh_ex_start.setMaximumSize(QSize(16777215, 40))
+        self.sh_ex_start.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 3px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_2.addWidget(self.sh_ex_start)
 
         self.sh_ex_stop = QPushButton(self.sh_ex)
         self.sh_ex_stop.setObjectName(u"sh_ex_stop")
         self.sh_ex_stop.setMaximumSize(QSize(16777215, 40))
+        self.sh_ex_stop.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 3px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_2.addWidget(self.sh_ex_stop)
 
@@ -129,6 +181,20 @@ class Ui_MainWindow(object):
         self.sh_ex_scripteditor = QPushButton(self.sh_ex)
         self.sh_ex_scripteditor.setObjectName(u"sh_ex_scripteditor")
         self.sh_ex_scripteditor.setMaximumSize(QSize(219, 85))
+        self.sh_ex_scripteditor.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_3.addWidget(self.sh_ex_scripteditor)
 
@@ -139,10 +205,10 @@ class Ui_MainWindow(object):
 
         self.sh_rec = QFrame(self.tab1)
         self.sh_rec.setObjectName(u"sh_rec")
-        self.sh_rec.setGeometry(QRect(0, 250, 801, 121))
+        self.sh_rec.setGeometry(QRect(10, 200, 801, 141))
         self.sh_rec.setStyleSheet(u"QFrame#sh_rec {\n"
-"   background-color: rgb(186, 184, 177);\n"
-"   border: 1px solid rgba(0, 0, 0, 0.8); border-radius: 10px;\n"
+"   background-color: rgba(0, 0, 0, 0.03);\n"
+"   border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 10px;\n"
 "}")
         self.verticalLayout_5 = QVBoxLayout(self.sh_rec)
         self.verticalLayout_5.setSpacing(0)
@@ -165,64 +231,76 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setSpacing(12)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, -1, 0, -1)
-        self.verticalLayout_13 = QVBoxLayout()
-        self.verticalLayout_13.setSpacing(0)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.label_8 = QLabel(self.sh_rec)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setMaximumSize(QSize(16777215, 20))
-        self.label_8.setLayoutDirection(Qt.LeftToRight)
-        self.label_8.setStyleSheet(u"QLabel {\n"
+        self.frame_recon = QFrame(self.sh_rec)
+        self.frame_recon.setObjectName(u"frame_recon")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.frame_recon.sizePolicy().hasHeightForWidth())
+        self.frame_recon.setSizePolicy(sizePolicy1)
+        self.frame_recon.setMinimumSize(QSize(0, 0))
+        self.frame_recon.setStyleSheet(u"QFrame#frame_recon {\n"
+"   background-color: rgba(0,0,0,0.01);\n"
+"   border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 3px;\n"
+"}")
+        self.frame_recon.setFrameShape(QFrame.StyledPanel)
+        self.frame_recon.setFrameShadow(QFrame.Raised)
+        self.layoutWidget_2 = QWidget(self.frame_recon)
+        self.layoutWidget_2.setObjectName(u"layoutWidget_2")
+        self.layoutWidget_2.setGeometry(QRect(0, 0, 212, 22))
+        self.verticalLayout_14 = QVBoxLayout(self.layoutWidget_2)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.label_9 = QLabel(self.layoutWidget_2)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setMaximumSize(QSize(16777215, 20))
+        self.label_9.setLayoutDirection(Qt.LeftToRight)
+        self.label_9.setStyleSheet(u"QLabel {\n"
 "    font-size: 15px;\n"
 "    font-family: \"Noto Sans\";\n"
 "	qproperty-alignment: 'Qt::AlignVCenter | Qt::AlignHCenter';\n"
 "}")
-        self.label_8.setAlignment(Qt.AlignCenter)
+        self.label_9.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_13.addWidget(self.label_8)
+        self.verticalLayout_14.addWidget(self.label_9)
 
-        self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
-        self.formLayout = QFormLayout()
-        self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setHorizontalSpacing(3)
-        self.formLayout.setVerticalSpacing(6)
-        self.formLayout.setContentsMargins(5, 10, -1, -1)
-        self.sh_rec_onmouseclick = QCheckBox(self.sh_rec)
+        self.layoutWidget = QWidget(self.frame_recon)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(0, 20, 213, 61))
+        self.formLayout_2 = QFormLayout(self.layoutWidget)
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.formLayout_2.setHorizontalSpacing(3)
+        self.formLayout_2.setVerticalSpacing(6)
+        self.formLayout_2.setContentsMargins(10, 5, 0, 0)
+        self.sh_rec_onmouseclick = QCheckBox(self.layoutWidget)
         self.sh_rec_onmouseclick.setObjectName(u"sh_rec_onmouseclick")
 
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.sh_rec_onmouseclick)
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.sh_rec_onmouseclick)
 
-        self.sh_rec_onmousemove = QCheckBox(self.sh_rec)
+        self.sh_rec_onmousemove = QCheckBox(self.layoutWidget)
         self.sh_rec_onmousemove.setObjectName(u"sh_rec_onmousemove")
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.sh_rec_onmousemove)
+        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.sh_rec_onmousemove)
 
-        self.sh_rec_onmousescroll = QCheckBox(self.sh_rec)
+        self.sh_rec_onmousescroll = QCheckBox(self.layoutWidget)
         self.sh_rec_onmousescroll.setObjectName(u"sh_rec_onmousescroll")
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.sh_rec_onmousescroll)
+        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.sh_rec_onmousescroll)
 
-        self.sh_rec_onkeyboard = QCheckBox(self.sh_rec)
+        self.sh_rec_onkeyboard = QCheckBox(self.layoutWidget)
         self.sh_rec_onkeyboard.setObjectName(u"sh_rec_onkeyboard")
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.sh_rec_onkeyboard)
+        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.sh_rec_onkeyboard)
 
-
-        self.horizontalLayout_6.addLayout(self.formLayout)
-
-
-        self.verticalLayout_13.addLayout(self.horizontalLayout_6)
-
-
-        self.horizontalLayout_7.addLayout(self.verticalLayout_13)
-
-        self.verticalLayout_17 = QVBoxLayout()
+        self.layoutWidget_3 = QWidget(self.frame_recon)
+        self.layoutWidget_3.setObjectName(u"layoutWidget_3")
+        self.layoutWidget_3.setGeometry(QRect(210, 0, 317, 82))
+        self.verticalLayout_17 = QVBoxLayout(self.layoutWidget_3)
         self.verticalLayout_17.setSpacing(3)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_7 = QLabel(self.sh_rec)
+        self.verticalLayout_17.setContentsMargins(10, 1, 0, 0)
+        self.label_7 = QLabel(self.layoutWidget_3)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMaximumSize(QSize(16777215, 20))
         self.label_7.setLayoutDirection(Qt.LeftToRight)
@@ -243,17 +321,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_11)
 
-        self.sh_rec_ontimetime = QRadioButton(self.sh_rec)
+        self.sh_rec_ontimetime = QRadioButton(self.layoutWidget_3)
         self.sh_rec_ontimetime.setObjectName(u"sh_rec_ontimetime")
 
         self.horizontalLayout_4.addWidget(self.sh_rec_ontimetime)
 
-        self.sh_rec_onperfcounter = QRadioButton(self.sh_rec)
+        self.sh_rec_onperfcounter = QRadioButton(self.layoutWidget_3)
         self.sh_rec_onperfcounter.setObjectName(u"sh_rec_onperfcounter")
 
         self.horizontalLayout_4.addWidget(self.sh_rec_onperfcounter)
 
-        self.sh_rec_onprocesstime = QRadioButton(self.sh_rec)
+        self.sh_rec_onprocesstime = QRadioButton(self.layoutWidget_3)
         self.sh_rec_onprocesstime.setObjectName(u"sh_rec_onprocesstime")
 
         self.horizontalLayout_4.addWidget(self.sh_rec_onprocesstime)
@@ -266,19 +344,48 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addLayout(self.horizontalLayout_4)
 
         self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setSpacing(10)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(5, -1, 5, -1)
-        self.sh_rec_start = QPushButton(self.sh_rec)
+        self.sh_rec_start = QPushButton(self.layoutWidget_3)
         self.sh_rec_start.setObjectName(u"sh_rec_start")
-        self.sh_rec_start.setMinimumSize(QSize(0, 0))
+        self.sh_rec_start.setMinimumSize(QSize(0, 30))
         self.sh_rec_start.setMaximumSize(QSize(16777215, 30))
+        self.sh_rec_start.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 2px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_10.addWidget(self.sh_rec_start)
 
-        self.sh_rec_stop = QPushButton(self.sh_rec)
+        self.sh_rec_stop = QPushButton(self.layoutWidget_3)
         self.sh_rec_stop.setObjectName(u"sh_rec_stop")
-        self.sh_rec_stop.setMinimumSize(QSize(0, 0))
+        self.sh_rec_stop.setMinimumSize(QSize(0, 30))
         self.sh_rec_stop.setMaximumSize(QSize(16777215, 30))
+        self.sh_rec_stop.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 2px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_10.addWidget(self.sh_rec_stop)
 
@@ -286,16 +393,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addLayout(self.horizontalLayout_10)
 
 
-        self.horizontalLayout_7.addLayout(self.verticalLayout_17)
+        self.horizontalLayout_7.addWidget(self.frame_recon)
 
         self.sh_rec_recordeditor = QPushButton(self.sh_rec)
         self.sh_rec_recordeditor.setObjectName(u"sh_rec_recordeditor")
         self.sh_rec_recordeditor.setMaximumSize(QSize(219, 85))
+        self.sh_rec_recordeditor.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(225,225,225);\n"
+"    border: 1px solid rgba(0,0,0,0.2);\n"
+"	border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(235,235,235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(225,225,225);\n"
+"    color: rgba(0,0,0,0.4)\n"
+"}")
 
         self.horizontalLayout_7.addWidget(self.sh_rec_recordeditor)
 
-        self.horizontalLayout_7.setStretch(1, 10)
-        self.horizontalLayout_7.setStretch(2, 8)
+        self.horizontalLayout_7.setStretch(0, 700)
+        self.horizontalLayout_7.setStretch(1, 800)
 
         self.verticalLayout_5.addLayout(self.horizontalLayout_7)
 
@@ -322,6 +443,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"GInput AI", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Executor", None))
+        self.sh_ex_line_filepath.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select .txt script path", None))
         self.sh_ex_filepath.setText("")
         self.sh_ex_start.setText(QCoreApplication.translate("MainWindow", u"Start (f6)", None))
         self.sh_ex_stop.setText(QCoreApplication.translate("MainWindow", u"Stop (f6)", None))
@@ -330,7 +452,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(whatsthis)
         self.sh_ex_scripteditor.setText(QCoreApplication.translate("MainWindow", u"Script Editor", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Recorder", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Record on", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Record on", None))
         self.sh_rec_onmouseclick.setText(QCoreApplication.translate("MainWindow", u"Mouse (Click)", None))
         self.sh_rec_onmousemove.setText(QCoreApplication.translate("MainWindow", u"Mouse (Move)", None))
         self.sh_rec_onmousescroll.setText(QCoreApplication.translate("MainWindow", u"Mouse (Scroll)", None))
