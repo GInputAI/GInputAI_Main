@@ -1,9 +1,8 @@
 import time
 from pynput.mouse import Controller as ControllerM
-from pynput.keyboard import Controller as ControllerK, Key
+from pynput.keyboard import Controller as ControllerK
 import pickle
 from copy import deepcopy
-import keyboard as kb
 
 mouse_controller = ControllerM()
 keyboard_controller = ControllerK()
@@ -36,7 +35,7 @@ FuncList = {'on_move': lambda x, y, z: on_move(x, y, z),
             'on_clickT': lambda x, y: click_press(x, y),
             'on_clickF': lambda x, y: click_release(x, y)}
 
-class RunScript():
+class Record():
     def Txt_to_Func(self):
         for i in range(len(self.reader)):
             func_name = self.reader[i][0]
@@ -64,19 +63,6 @@ class RunScript():
             i()
         print('Done')
 
-'''
-go_to_mine = RunScript('go_to_mine')
-go_to_scala = RunScript('read_script')
-grad_calibr = RunScript('grad_calibr')
-
-print('Для старта нажми f7')
-while True:
-    if kb.is_pressed('f7'):
-        break
-go_to_mine()
-#go_to_scala()
-grad_calibr()'''
-
-def work(ScriptName):
-    Script = RunScript(ScriptName)
+def ScriptRun(ScriptName):
+    Script = Record(ScriptName)
     Script()
