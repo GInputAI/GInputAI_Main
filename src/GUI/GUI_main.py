@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.sh_rec_onmousemove.setChecked(True)
         self.ui.sh_rec_onkeyboard.setChecked(True)
         self.ui.sh_rec_onperfcounter.setChecked(True)
-        self.ui.sh_rec_start.clicked.connect(lambda: self.RecordStart('tt'))
+        self.ui.sh_rec_start.clicked.connect(lambda: self.RecordStart(self.ui.sh_rec_line_filename.text()))
 
     def RecordStart(self, name):
         if __name__ == "__main__":

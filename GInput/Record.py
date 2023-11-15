@@ -65,9 +65,9 @@ def Start(ScriptName):
             for i in range(1, len(reader)):
                 reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
 
-            if not os.path.exists("../data"):
-                os.makedirs("../data")
-            with open("../data/" + ScriptName + '.pickle', "wb") as file:
+            if not os.path.exists("../../data"):
+                os.makedirs("..../data")
+            with open("../../data/" + ScriptName + '.pickle', "wb") as file:
                 pickle.dump(reader, file)
                 file.close()
 
