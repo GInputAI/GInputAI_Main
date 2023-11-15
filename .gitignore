@@ -7,8 +7,7 @@ __pycache__/
 *.so
 
 #User_Data
-readers/
-exec/test/
+data/
 
 # Distribution / packaging
 .Python

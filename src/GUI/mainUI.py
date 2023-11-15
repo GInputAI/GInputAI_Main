@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         MainWindow.setEnabled(True)
         MainWindow.resize(824, 515)
         icon = QIcon()
-        icon.addFile(u":/ico/ico/mouse_icon-icons.com_60636.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/ico/assets/mouse_icon-icons.com_60636.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"")
         MainWindow.setTabShape(QTabWidget.Rounded)
@@ -108,8 +108,8 @@ class Ui_MainWindow(object):
         self.sh_ex_filepath.setMinimumSize(QSize(32, 32))
         self.sh_ex_filepath.setMaximumSize(QSize(32, 32))
         self.sh_ex_filepath.setStyleSheet(u"QPushButton {\n"
-"   background-color: rgba(0, 0, 0, 0.2);\n"
-"   border: 1px solid rgba(0, 0, 0, 0.5); border-radius: 4px;\n"
+"   background-color: rgb(202, 202, 202);\n"
+"   border: 1px solid rgba(0, 0, 0, 0.32); border-radius: 4px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
 "	background-color: rgb(235,235,235);\n"
 "}")
         icon1 = QIcon()
-        icon1.addFile(u":/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.sh_ex_filepath.setIcon(icon1)
 
         self.horizontalLayout.addWidget(self.sh_ex_filepath)

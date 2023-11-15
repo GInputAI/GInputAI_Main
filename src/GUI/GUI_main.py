@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from mainUI import Ui_MainWindow
+from GInput import Record
 
 
 class MainWindow(QMainWindow):
@@ -16,12 +17,17 @@ class MainWindow(QMainWindow):
         self.ui.sh_rec_onmousemove.setChecked(True)
         self.ui.sh_rec_onkeyboard.setChecked(True)
         self.ui.sh_rec_onperfcounter.setChecked(True)
+        self.ui.sh_rec_start.clicked.connect(lambda: self.RecordStart('tt'))
+
+    def RecordStart(self, name):
+        if __name__ == "__main__":
+            Record.Start(name)
 
 
     def open_file_dialog(self, label_upd):
         # Открываем диалог выбора файла
         dialog = QFileDialog(self)
-        #dialog.setDirectory("C:/Users/XUI/PycharmProjects/GInputAI_Main/exec")
+        #dialog.setDirectory("C:/Users/XUI/PycharmProjects/GInputAI_Main/src")
         dialog.setAcceptMode(QFileDialog.AcceptOpen)  # Режим выбора одного файла
         dialog.fileSelected.connect(label_upd.setText)  # Подключаем слот для обновления QLabel
         dialog.exec()

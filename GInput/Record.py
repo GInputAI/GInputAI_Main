@@ -1,23 +1,15 @@
+import os
 import time
 from multiprocessing import Process, Manager
 import keyboard as kb
 from pynput import mouse
-from pynput.mouse import Controller as ControllerM
 from pynput import keyboard
-from pynput.keyboard import Controller as ControllerK
 from copy import deepcopy
 import pickle
-
-
-mouse_controller = ControllerM()
-keyboard_controller = ControllerK()
 
 def on_movel(x, y, reader):
     reader.append(['on_move', x, y, time.perf_counter()])
     time.sleep(0.0325)
-
-#0.04 норм 0.03 неном 0.035 норм 0.0325 ненорм 0.03375 норм НО 0.0325 норм если через отдельный листнер прописать аппенд и через отдельный задержку
-#time.slepp в on_movel с ним можно поиграться типо разную задержку попробовать
 
 def start_listener_click(reader):
     with mouse.Listener(on_click=lambda x, y, b, p: reader.append(['on_click', x, y, b, p, time.perf_counter()])) as click_listener:
@@ -37,8 +29,8 @@ def start_listener_keyboard(reader):
         keyboard_listener.join()
 
 
-def record_script(ScriptName):
-    if __name__ == "__main__" or __name__ == "getKeyDown":
+def Start(ScriptName):
+    if __name__ in ("Record", "GInput.Record"):
         with Manager() as manager:
             reader = manager.list()
 
@@ -73,7 +65,9 @@ def record_script(ScriptName):
             for i in range(1, len(reader)):
                 reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
 
-            with open("../readers/" + ScriptName + '.pickle', "wb") as file:
+            if not os.path.exists("../data"):
+                os.makedirs("../data")
+            with open("../data/" + ScriptName + '.pickle', "wb") as file:
                 pickle.dump(reader, file)
                 file.close()
 

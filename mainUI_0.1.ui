@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="files_ico.qrc">
-    <normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</iconset>
+    <normaloff>:/ico/assets/mouse_icon-icons.com_60636.ico</normaloff>:/ico/assets/mouse_icon-icons.com_60636.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -195,7 +195,7 @@ QPushButton:pressed {
                </property>
                <property name="icon">
                 <iconset resource="files_ico.qrc">
-                 <normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
+                 <normaloff>:/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
                </property>
               </widget>
              </item>
