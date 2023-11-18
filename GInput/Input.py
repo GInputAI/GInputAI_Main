@@ -53,7 +53,7 @@ class Record():
 
         self.reader = deepcopy(list(filter(lambda x: x != None, self.reader)))
     def __init__(self, ScriptName):
-        with open('../data/' + ScriptName + '.pickle', "rb") as file:
+        with open('../../data/' + ScriptName + '.pickle', "rb") as file:
             self.reader = pickle.load(file)
         self.Txt_to_Func()
 

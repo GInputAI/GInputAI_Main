@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         MainWindow.setEnabled(True)
         MainWindow.resize(807, 515)
         icon = QIcon()
-        icon.addFile(u":/ico/ico/mouse_icon-icons.com_60636.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/ico/assets/mouse_icon-icons.com_60636.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"")
         MainWindow.setTabShape(QTabWidget.Rounded)
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
 "    color: rgba(0,0,0,0.4)\n"
 "}")
         icon1 = QIcon()
-        icon1.addFile(u":/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.sh_ex_filepath.setIcon(icon1)
 
         self.horizontalLayout.addWidget(self.sh_ex_filepath)

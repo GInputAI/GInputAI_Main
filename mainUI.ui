@@ -20,8 +20,8 @@
    <string>GInput AI</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</normaloff>:/ico/ico/mouse_icon-icons.com_60636.ico</iconset>
+   <iconset resource="files_ico.qrc">
+    <normaloff>:/ico/assets/mouse_icon-icons.com_60636.ico</normaloff>:/ico/assets/mouse_icon-icons.com_60636.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -212,8 +212,8 @@ QPushButton:pressed {
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset>
-                  <normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/ico/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
+                 <iconset resource="files_ico.qrc">
+                  <normaloff>:/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico</normaloff>:/ico/assets/folder_open_FILL0_wght400_GRAD0_opsz24.ico</iconset>
                 </property>
                </widget>
               </item>
