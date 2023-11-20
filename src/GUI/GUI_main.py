@@ -1,5 +1,4 @@
 import sys
-import threading
 from multiprocessing import Process, Manager
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from mainUI import Ui_MainWindow
@@ -7,9 +6,8 @@ from GInput import Record
 import os
 
 class MainWindow(QMainWindow):
-
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setFixedSize(self.width(), self.height())
@@ -25,6 +23,7 @@ class MainWindow(QMainWindow):
         self.ui.sh_ex_start.clicked.connect(lambda: self.ExecStart(self.ui.sh_ex_line_filepath.text()))
 
         #Process
+
 
     @classmethod
     def RecordStart(cls, name):
@@ -63,11 +62,9 @@ class MainWindow(QMainWindow):
             print(f'Произошла ошибка при выполнении скрипта: {str(e)}')
         ExecStatus.value = False
 
-
     def open_file_dialog(self, label_upd):
         dialog = QFileDialog(self)
         dialog.setDirectory(os.path.dirname(os.path.abspath(__file__))[0:-8] + "/Scripts")
-        dialog.setAcceptMode(QFileDialog.AcceptOpen)
         dialog.fileSelected.connect(label_upd.setText)
         dialog.exec()
 
@@ -75,7 +72,6 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ExecStatus = Manager().Value(bool, False)
-
 
     window = MainWindow()
     window.show()

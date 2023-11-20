@@ -29,51 +29,57 @@ def start_listener_keyboard(reader):
         keyboard_listener.join()
 
 
-def Start(ScriptName):
+def Start(ScriptName, start_butt = 'f7', stop_butt = 'f7', move_ = True, click_ = True, keyboard_ = True, scroll_ = False, termialmode_ = True):
     if __name__ in ("Record", "GInput.Record"):
         with Manager() as manager:
             reader = manager.list()
 
-            Pclick = Process(target=start_listener_click, args=(reader, ))
-            Pmove = Process(target=start_listener_move2, args=(reader, ))
-            Pmove_delay = Process(target=start_listener_move)
-            Pkeybroad = Process(target=start_listener_keyboard, args=(reader, ))
+            # Process __init__
+            Pclick = Process(target=start_listener_click, args=(reader, )) if move_ else None
+            Pmove = Process(target=start_listener_move2, args=(reader, )) if click_ else None
+            Pmove_delay = Process(target=start_listener_move) if move_ else None
+            Pkeybroad = Process(target=start_listener_keyboard, args=(reader, )) if keyboard_ else None
 
-            print('Для старта нажми f7')
+            # Start on button
+            print(f'Для старта нажми {start_butt}') if termialmode_ else None
             while True:
                 if kb.is_pressed('f7'):
                     break
             time.sleep(0.1)
-            print('Начало записи')
+            print('Начало записи') if termialmode_ else None
 
             time_start = time.perf_counter()
-            Pmove_delay.start()
-            Pclick.start()
-            Pkeybroad.start()
-            Pmove.start()
+
+            Pmove_delay.start() if move_ else None
+            Pclick.start() if click_ else None
+            Pkeybroad.start() if keyboard_ else None
+            Pmove.start() if move_ else None
 
             while True:
-                if kb.is_pressed('f7'):
+                if kb.is_pressed(stop_butt):
                     break
 
-            reader = list(reader[:])
-            for i in range(len(reader)):
-                reader[i][-1] += - time_start
-
-
-            temp_reader = deepcopy(reader)
+            # Recalc
+            reader = list(map(lambda x: x[:-1] + [x[-1] - time_start], reader))
+            temp = deepcopy(reader)
             for i in range(1, len(reader)):
-                reader[i][-1] = reader[i][-1] - temp_reader[i - 1][-1]
+                reader[i][-1] = reader[i][-1] - temp[i - 1][-1]
 
-            if not os.path.exists("../../data"):
+            # Save to .pickle
+            try:
+                with open("../../data/" + ScriptName + '.pickle', "wb") as file:
+                    pickle.dump(reader, file)
+                    file.close()
+            except FileNotFoundError:
                 os.makedirs("../../data")
-            with open("../../data/" + ScriptName + '.pickle', "wb") as file:
-                pickle.dump(reader, file)
-                file.close()
+                with open("../../data/" + ScriptName + '.pickle', "wb") as file:
+                    pickle.dump(reader, file)
+                    file.close()
 
-            Pmove.terminate()
-            Pclick.terminate()
-            Pkeybroad.terminate()
-            Pmove_delay.terminate()
+            # Exit process
+            Pmove.terminate() if move_ else None
+            Pclick.terminate() if click_ else None
+            Pkeybroad.terminate() if keyboard_ else None
+            Pmove_delay.terminate() if move_ else None
 
-            print('Файл сохранён')
+            print('Файл сохранён') if termialmode_ else None
